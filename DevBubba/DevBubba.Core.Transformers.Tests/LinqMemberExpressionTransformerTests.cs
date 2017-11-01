@@ -18,7 +18,7 @@ namespace DevBubba.Core.Transformers.Tests
         public void Initialize()
         {
             _mock = AutoMock.GetLoose();
-            _mock.Provide<ILinqTransformer<MemberExpression>, LinqMemberExpressionTransformer>();
+            _mock.Provide<ILinqExpressionTransformer<MemberExpression>, LinqMemberExpressionTransformer>();
 
 
         }
@@ -32,7 +32,7 @@ namespace DevBubba.Core.Transformers.Tests
         [TestMethod]
         public void Test_LinqBinaryExpressionTransformer_Transform_Correct_From_To()
         {
-            var memberExpressionLinqTransformer = _mock.Create<ILinqTransformer<MemberExpression>>();
+            var memberExpressionLinqTransformer = _mock.Create<ILinqExpressionTransformer<MemberExpression>>();
 
             Func<From, object> from = fromObject => fromObject.Property;
 

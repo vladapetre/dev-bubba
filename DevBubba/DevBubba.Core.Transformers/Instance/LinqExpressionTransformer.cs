@@ -6,9 +6,9 @@ using System.Text;
 
 namespace DevBubba.Core.Transformers.Instance
 {
-    public abstract class LinqExpressionTransformer<TExpression> : ILinqTransformer<TExpression> where TExpression: Expression
+    public abstract class LinqExpressionTransformer<TExpression> : ILinqExpressionTransformer<TExpression> where TExpression: Expression
     {
-        protected ILinqTransformerFactory LinqTransformerFactory { get; }
+        protected INamedInstanceFactory LinqTransformerFactory { get; }
 
 
         public abstract ExpressionType ExpressionType { get; }
@@ -21,8 +21,8 @@ namespace DevBubba.Core.Transformers.Instance
                 return Transform<TFrom,TTo>((TExpression)fromExpression);
             else
             {
-                return Transform<TFrom, TTo>((TExpression)fromExpression);
-                //var expressionTransformer = LinqTransformerFactory.Get<ILinqTransformer>
+                var expressionTransformer = LinqTransformerFactory.Get<ILinqExpressionTransformer>(Enum.GetName(typeof(ExpressionType), fromExpression.NodeType));
+                return expressionTransformer.Transform<TFrom, TTo>(fromExpression);
             }
         }
 

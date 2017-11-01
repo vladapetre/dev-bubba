@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DevBubba.Core.Transformers.Factory
 {
-    public class LinqTransformerFactory : ILinqTransformerFactory
+    public class LinqExpressionTransformerFactory : INamedInstanceFactory
     {
         public TType Get<TType>()
         {

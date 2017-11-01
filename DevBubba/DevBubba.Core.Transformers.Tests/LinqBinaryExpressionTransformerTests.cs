@@ -15,7 +15,7 @@ namespace DevBubba.Core.Transformers.Tests
         public void Initialize()
         {
             _mock = AutoMock.GetLoose();
-            _mock.Provide<LinqBinaryExpressionTransformerTests, ILinqTransformer<BinaryExpression>>();
+            _mock.Provide<LinqBinaryExpressionTransformerTests, ILinqExpressionTransformer<BinaryExpression>>();
 
             
         }
@@ -29,7 +29,7 @@ namespace DevBubba.Core.Transformers.Tests
         [TestMethod]
         public void Test_LinqBinaryExpressionTransformer_Transform_Correct_From_To()
         {
-            var binaryExpressionLinqTransformer = _mock.Create<ILinqTransformer<BinaryExpression>>();
+            var binaryExpressionLinqTransformer = _mock.Create<ILinqExpressionTransformer<BinaryExpression>>();
             throw new NotImplementedException();
         }
     }

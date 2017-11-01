@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DevBubba.Core.Factory
 {
-    public interface ILinqTransformerFactory : IFactory
+    public interface INamedInstanceFactory : IFactory
     {
     }
 }
