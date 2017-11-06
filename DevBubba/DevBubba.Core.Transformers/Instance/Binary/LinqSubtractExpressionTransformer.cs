@@ -6,9 +6,9 @@ using DevBubba.Core.Factory;
 
 namespace DevBubba.Core.Transformers.Instance.Binary
 {
-    public class LinqSubstractExpressionTransformer : LinqBinaryExpressionTransformer
+    public class LinqSubtractExpressionTransformer : LinqBinaryExpressionTransformer
     {
-        public LinqSubstractExpressionTransformer(INamedInstanceFactory namedInstanceFactory) : base(namedInstanceFactory)
+        public LinqSubtractExpressionTransformer(INamedInstanceFactory namedInstanceFactory) : base(namedInstanceFactory)
         {
         }
 

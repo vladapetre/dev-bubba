@@ -7,9 +7,9 @@ using DevBubba.Core.Factory;
 
 namespace DevBubba.Core.Transformers.Instance
 {
-    public class LinqMemberExpressionTransformer : LinqExpressionTransformer<MemberExpression>
+    public class LinqMemberAccessExpressionTransformer : LinqExpressionTransformer<MemberExpression>
     {
-        public LinqMemberExpressionTransformer(INamedInstanceFactory namedInstanceFactory) : base(namedInstanceFactory)
+        public LinqMemberAccessExpressionTransformer(INamedInstanceFactory namedInstanceFactory) : base(namedInstanceFactory)
         {
         }
 
