@@ -8,11 +8,11 @@ namespace DevBubba.Core.Transformers
 
     public interface ILinqExpressionTransformer : ITransformer
     {
-        LambdaExpression Transform<TFrom, TTo>(Expression fromExpression);
+        Expression Transform<TFrom, TTo>(Expression fromExpression);
     }
 
     public interface ILinqExpressionTransformer<TExpression> : ILinqExpressionTransformer where TExpression : Expression
     {
-        LambdaExpression Transform<TFrom, TTo>(TExpression fromExpression); 
+        TExpression Transform<TFrom, TTo>(TExpression fromExpression); 
     }
 }

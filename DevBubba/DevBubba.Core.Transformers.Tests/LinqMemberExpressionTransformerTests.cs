@@ -1,4 +1,6 @@
-﻿using Autofac.Extras.Moq;
+﻿using Autofac;
+using Autofac.Extras.Moq;
+using DevBubba.Core.Factory;
 using DevBubba.Core.Transformers.Instance;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -17,9 +19,10 @@ namespace DevBubba.Core.Transformers.Tests
         [TestInitialize]
         public void Initialize()
         {
+            var container = Container.Get();
             _mock = AutoMock.GetLoose();
-            _mock.Provide<ILinqExpressionTransformer<MemberExpression>, LinqMemberExpressionTransformer>();
-
+            _mock.Provide<INamedInstanceFactory>(container.Resolve<INamedInstanceFactory>());
+            _mock.Provide<ILinqExpressionTransformer<LambdaExpression>, LinqLambdaExpressionTransformer>();
 
         }
 
@@ -32,15 +35,11 @@ namespace DevBubba.Core.Transformers.Tests
         [TestMethod]
         public void Test_LinqBinaryExpressionTransformer_Transform_Correct_From_To()
         {
-            var memberExpressionLinqTransformer = _mock.Create<ILinqExpressionTransformer<MemberExpression>>();
+            var memberExpressionLinqTransformer = _mock.Create<ILinqExpressionTransformer<LambdaExpression>>();
 
-            Func<From, object> from = fromObject => fromObject.Property;
+            Expression<Func<From, object>> expr = exp => exp.Property;
 
-            //https://stackoverflow.com/questions/14907327/how-to-convert-funct-bool-to-expressionfunct-bool
-
-            var fromMemberExpression = Expression.PropertyOrField(Expression.Parameter(typeof(From)), "Property");
-
-            var toMemberExpression = memberExpressionLinqTransformer.Transform<From, To>(fromMemberExpression);
+            var toMemberExpression = memberExpressionLinqTransformer.Transform<From, To>(expr);
 
             var toClass = new To { Property = "Success" };
             var toLinq = toMemberExpression.Compile();

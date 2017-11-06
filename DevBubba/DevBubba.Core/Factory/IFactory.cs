@@ -7,6 +7,6 @@ namespace DevBubba.Core.Factory
     public interface IFactory
     {
         TType Get<TType>();
-        TType Get<TType>(string namedInstance);
+        TType GetNamed<TType>(string namedInstance);
     }
 }

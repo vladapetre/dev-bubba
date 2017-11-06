@@ -1,4 +1,5 @@
-﻿using DevBubba.Core.Factory;
+﻿using Autofac;
+using DevBubba.Core.Factory;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,14 +8,21 @@ namespace DevBubba.Core.Transformers.Factory
 {
     public class LinqExpressionTransformerFactory : INamedInstanceFactory
     {
-        public TType Get<TType>()
+        private readonly IComponentContext _container;
+
+        public LinqExpressionTransformerFactory(IComponentContext container)
         {
-            throw new NotImplementedException();
+            _container = container;
         }
 
-        public TType Get<TType>(string namedInstance)
+        public TType Get<TType>()
         {
-            throw new NotImplementedException();
+            return _container.Resolve<TType>();
+        }
+
+        public TType GetNamed<TType>(string namedInstance)
+        {
+            return _container.ResolveNamed<TType>(namedInstance);
         }
     }
 }
