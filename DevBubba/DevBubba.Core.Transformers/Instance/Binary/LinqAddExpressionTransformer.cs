@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using System.Text;
 using DevBubba.Core.Factory;
 
-namespace DevBubba.Core.Transformers.Instance
+namespace DevBubba.Core.Transformers.Instance.Binary
 {
     public class LinqAddExpressionTransformer : LinqBinaryExpressionTransformer
     {

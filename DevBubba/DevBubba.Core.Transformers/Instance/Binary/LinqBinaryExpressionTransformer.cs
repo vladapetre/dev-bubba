@@ -5,7 +5,7 @@ using System.Text;
 using DevBubba.Core.Factory;
 using DevBubba.Core.Transformers.Helpers;
 
-namespace DevBubba.Core.Transformers.Instance
+namespace DevBubba.Core.Transformers.Instance.Binary
 {
     public abstract class LinqBinaryExpressionTransformer : LinqExpressionTransformer<BinaryExpression>
     {

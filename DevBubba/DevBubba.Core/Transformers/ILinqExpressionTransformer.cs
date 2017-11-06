@@ -8,6 +8,7 @@ namespace DevBubba.Core.Transformers
 
     public interface ILinqExpressionTransformer : ITransformer
     {
+        ExpressionType ExpressionType { get; }
         Expression Transform<TFrom, TTo>(Expression fromExpression);
     }
 
